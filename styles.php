@@ -21,7 +21,7 @@ $buttonDetail="btn btn-fab btn-info";
 
 $buttonCard="card-header-rose card-header-icon";
 
-$comboColor="btn btn-info";
+$comboColor="btn btn-primary";
 
 $colorCardDetail="card-header-rose";
 

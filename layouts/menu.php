@@ -9,7 +9,7 @@ $globalNombreAreaX=$_SESSION['globalNombreArea'];
 
 if($globalPerfilX==1){
 ?>
-<div class="sidebar" data-color="azure" data-background-color="black" data-image="assets/img/sidebar-1.jpg">
+<div class="sidebar" data-color="purple" data-background-color="red" data-image="assets/img/scz.jpg">
       <div class="logo">
         <a href="http://www.creative-tim.com" class="simple-text logo-mini">
           <img src="assets/img/logoibnorca.fw.png" width="30" />
@@ -46,9 +46,23 @@ if($globalPerfilX==1){
               <ul class="nav">
                 
                 <li class="nav-item ">
-                  <a class="nav-link" href="?opcion=listPerspectivas">
-                    <span class="sidebar-mini"> PA </span>
-                    <span class="sidebar-normal"> Perspectivas de Analisis</span>
+                  <a class="nav-link" href="?opcion=listConfigCuentas">
+                    <span class="sidebar-mini"> CC </span>
+                    <span class="sidebar-normal"> Configuracion de Cuentas </span>
+                  </a>
+                </li>
+
+                <li class="nav-item ">
+                  <a class="nav-link" href="?opcion=listPlanCuentas">
+                    <span class="sidebar-mini"> PC </span>
+                    <span class="sidebar-normal"> Plan de Cuentas </span>
+                  </a>
+                </li>
+
+                <li class="nav-item ">
+                  <a class="nav-link" href="?opcion=listPartidasPres">
+                    <span class="sidebar-mini"> PP </span>
+                    <span class="sidebar-normal"> Partidas Presupuestarias </span>
                   </a>
                 </li>
 
@@ -67,9 +81,9 @@ if($globalPerfilX==1){
               <ul class="nav">
                 
                 <li class="nav-item ">
-                  <a class="nav-link" href="?opcion=listObjetivos">
-                    <span class="sidebar-mini"> T1</span>
-                    <span class="sidebar-normal"> Transacciones 1 </span>
+                  <a class="nav-link" href="?opcion=listComprobantes">
+                    <span class="sidebar-mini"> C </span>
+                    <span class="sidebar-normal"> Comprobantes </span>
                   </a>
                 </li>                
               </ul>

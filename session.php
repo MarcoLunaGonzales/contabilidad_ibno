@@ -1,5 +1,6 @@
 <?php
 require_once 'functions.php';
+require_once 'functionsGeneral.php';
 require_once 'conexion.php';
 
 $dbh = new Conexion();
@@ -16,12 +17,15 @@ $stmt->bindColumn('nombre', $nombre);
 $stmt->bindColumn('cod_area', $codArea);
 $stmt->bindColumn('cod_unidad', $codUnidad);
 $stmt->bindColumn('perfil', $perfil);
-$stmt->bindColumn('usuario_pon', $usuarioPON);
 
 while ($rowDetalle = $stmt->fetch(PDO::FETCH_BOUND)) {
+	echo "ENTRO A DETALLE";
 	$nombreUnidad=abrevUnidad($codUnidad);
+	$nombreArea=abrevUnidad($codArea);
+
+	//echo $codUnidad." ".$nombreUnidad;
 	
-	$codAreaTrabajo=buscarAreasAdicionales($codigo, 1);
+	/*$codAreaTrabajo=buscarAreasAdicionales($codigo, 1);
 	if($codAreaTrabajo!="" && $codAreaTrabajo!=0){
 		$codAreaTrabajo=substr($codAreaTrabajo, 1); ;
 	}
@@ -30,9 +34,7 @@ while ($rowDetalle = $stmt->fetch(PDO::FETCH_BOUND)) {
 		$codUnidadTrabajo=substr($codUnidadTrabajo, 1);
 	}
 	//echo $codAreaTrabajo;
-
-	$nombreArea=abrevArea($codAreaTrabajo);
-	$nombreUnidad=abrevUnidad($codUnidadTrabajo);
+	*/
 
 	//echo $nombreArea;
 	//SACAMOS LA GESTION ACTIVA
@@ -50,51 +52,25 @@ while ($rowDetalle = $stmt->fetch(PDO::FETCH_BOUND)) {
 	$_SESSION['globalNombreGestion']=$nombreGestion;
 
 
-	$_SESSION['globalUnidad']=$codUnidadTrabajo;
+	$_SESSION['globalUnidad']=$codUnidad;
 	$_SESSION['globalNombreUnidad']=$nombreUnidad;
 
-	$_SESSION['globalArea']=$codAreaTrabajo;
+	$_SESSION['globalArea']=$codArea;
 	$_SESSION['globalNombreArea']=$nombreArea;
 	$_SESSION['logueado']=1;
 	$_SESSION['globalPerfil']=$perfil;
-	$_SESSION['globalUserPON']=$usuarioPON;
 
 
-	if($codigo==183){
+	if($codigo==90){
 		$_SESSION['globalAdmin']=1;			
 	}else{
 		$_SESSION['globalAdmin']=0;	
 	}
 	
-	if($perfil==1 || $perfil==2){
-		$arrayUnidadesReports=obtenerUnidadesReport(0);
-		$arrayAreasReports=obtenerAreasReport(0);
-		$arrayFondosReports=obtenerFondosReport(0);
-		$arrayOrganismosReports=obtenerOrganismosReport(0);		
-	}
-	if($perfil==3 || $perfil==6){
-		$arrayUnidadesReports=obtenerUnidadesReport($codUnidadTrabajo);
-		$arrayFondosReports=obtenerFondosReport($codUnidadTrabajo);
-
-		if($codAreaTrabajo=="0,78"){
-			$arrayAreasReports=obtenerAreasReport(0);
-			$arrayOrganismosReports=obtenerOrganismosReport(0);
-		}else{
-			$arrayAreasReports=obtenerAreasReport($codAreaTrabajo);
-			$arrayOrganismosReports=obtenerOrganismosReport($codAreaTrabajo);
-		}			
-	}
-	//echo $codAreaTrabajo;
-
-	$_SESSION['globalUnidadesReports']=$arrayUnidadesReports;
-	$_SESSION['globalAreasReports']=$arrayAreasReports;
-	$_SESSION['globalOrganismosReports']=$arrayOrganismosReports;
-	$_SESSION['globalFondosReports']=$arrayFondosReports;
 	$_SESSION['globalServerArchivos']="http://ibnored.ibnorca.org/itranet/documentos/";
 
 
-
-	$sIdentificador = "monitoreo";
+	/*$sIdentificador = "monitoreo";
 	$sKey="837b8d9aa8bb73d773f5ef3d160c9b17";
 	$datos=array("sIdentificador"=>$sIdentificador, "sKey"=>$sKey, "operacion"=>"Menu", "IdUsuario"=>183);
 	$datos=json_encode($datos);
@@ -108,8 +84,10 @@ while ($rowDetalle = $stmt->fetch(PDO::FETCH_BOUND)) {
 	//header('Content-type: application/json');   
 	//print_r($remote_server_output);       
 	$obj=json_decode($remote_server_output);
-	$_SESSION['globalMenuJson']=$obj;
+	$_SESSION['globalMenuJson']=$obj;*/
 
 }
+
 header("location:index.php");
+
 ?>

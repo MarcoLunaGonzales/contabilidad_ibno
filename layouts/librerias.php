@@ -49,6 +49,7 @@
 
   <script src="assets/demo/demo.js"></script>
 
+
   <script>
     $(document).ready(function() {
       $().ready(function() {
@@ -237,6 +238,18 @@
   <script type="text/javascript">
     $(document).ready(function() {
         $('#tablePaginator').DataTable( {
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
+            }
+        } );
+    } );
+  </script>
+
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+        $('#tablePaginator50').DataTable( {
+            "pageLength": 50,
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Spanish.json"
             }
